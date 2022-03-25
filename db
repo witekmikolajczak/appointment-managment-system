@@ -1,7 +1,0 @@
-pgadmin4:
-    login: admin@admin.pl
-    password: postgres
-
-db localhost:
-    login: postgres
-    password: root
