@@ -1,19 +1,35 @@
-import "./App.css";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { useContext } from "react";
+
+import AuthContext from "./store/auth-context";
+import Layout from "./components/Layout/Layout";
+import UserProfile from "./components/Profile/UserProfile";
+import AuthPage from "./pages/AuthPage";
+import HomePage from "./pages/HomePage";
 
 function App() {
+  const authCtx = useContext(AuthContext);
   return (
-    <div className="App">
-      <h1>CRUD application</h1>
-      <div className="form">
-        <label>Movie name: </label>
-        <input type="text" name="movieName" />
+    <Layout>
+      <Switch>
+        <Route path="/" exact>
+          <HomePage />
+        </Route>
+        {!authCtx.isLoggedIn && (
+          <Route path="/auth">
+            <AuthPage />
+          </Route>
+        )}
+        <Route path="/profile">
+          {authCtx.isLoggedIn && <UserProfile />}
+          {!authCtx.isLoggedIn && <Redirect to="/auth" />}
+        </Route>
 
-        <label>Review</label>
-        <input type="text" name="review" />
-
-        <button> Submit </button>
-      </div>
-    </div>
+        <Route path="*">
+          <Redirect to="/" />
+        </Route>
+      </Switch>
+    </Layout>
   );
 }
 
