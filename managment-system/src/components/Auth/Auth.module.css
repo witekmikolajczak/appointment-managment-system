@@ -6,3 +6,44 @@
   padding: 1rem;
   text-align: center;
 }
+
+.control {
+  margin: 1rem;
+}
+
+.control label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.control input {
+  font: inherit;
+  border: 2px solid black;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.actions button {
+  cursor: pointer;
+  font: inherit;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 4px;
+  padding: 0.5rem 2.5rem;
+}
+
+.actions .toggle {
+  margin-top: 1rem;
+  border: none;
+}
+
+.actions .toggle:hover {
+  font-size: larger;
+}
